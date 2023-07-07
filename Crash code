@@ -1,0 +1,31 @@
+package Collections;
+
+import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+
+public class file {
+	public static void main(String[] args) throws Exception {
+		InputStream stream = null;
+		try {
+			stream = new FileInputStream("D:\\TEST1\\JavaCollections\\TextFiles\\hey.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		FileOutputStream stream1 = null;
+		try {
+			stream1 = new FileOutputStream("D:\\TEST1\\JavaCollections\\TextFiles\\hell.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		Reader reader = new InputStreamReader(stream);
+		Writer writer = new OutputStreamWriter(stream1);
+		int i;
+		while ((i = reader.read()) != -1) {
+			writer.write((char) i);
+		}
+		reader.close();
+	}
+}
