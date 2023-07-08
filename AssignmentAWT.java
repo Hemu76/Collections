@@ -139,13 +139,12 @@ public class Main {
 				Main m=new Main();
 				try{
 					int x=m.incr();
-					while(x<AE.size() && x>=0) {
+					if(x<AE.size() && x>=0) {
 						t1.setText(AE.get(x).getE_no());
 						t2.setText(AE.get(x).getName());
 						t3.setText(AE.get(x).getJob());
 						t4.setText(AE.get(x).getSal());
 						t5.setText(AE.get(x).getDept());
-						break;
 					}
 				}
 				catch(Exception ex) {
@@ -158,13 +157,12 @@ public class Main {
 				Main m=new Main();
 				try {
 					int x=m.decr();
-					while(x<AE.size() && x>=0) {
-					t1.setText(AE.get(x).getE_no());
-					t2.setText(AE.get(x).getName());
-					t3.setText(AE.get(x).getJob());
-					t4.setText(AE.get(x).getSal());
-					t5.setText(AE.get(x).getDept());
-					break;
+					if(x<AE.size() && x>=0) {
+						t1.setText(AE.get(x).getE_no());
+						t2.setText(AE.get(x).getName());
+						t3.setText(AE.get(x).getJob());
+						t4.setText(AE.get(x).getSal());
+						t5.setText(AE.get(x).getDept());
 					}
 				}
 				catch(Exception ex) {
