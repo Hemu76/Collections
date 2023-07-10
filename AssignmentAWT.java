@@ -1,4 +1,3 @@
-package AWT;
 
 import java.awt.Button;
 import java.awt.Choice;
@@ -11,43 +10,49 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import javax.swing.JOptionPane;
 
 public class Main {
-	static int k=0;
+	static int k = 0;
 	static int index;
 	static String x1;
 	static String x2;
 	static String x3;
 	static String x4;
 	static String x5;
+
 	public int incr() {
 		return k++;
-		//System.out.println(k);
+		// System.out.println(k);
 	}
+
 	public int decr() {
 		return k--;
 	}
+
 	public static void main(String[] args) throws Exception {
-		File f_src = new File("C:\\Users\\USER\\eclipse-workspace\\Java Programming\\src\\Files\\EmployeeDetails.txt");
+		File f_src = new File("D:\\TEST1\\JavaCollections\\TextFiles\\hey.txt");
 		FileReader reader = new FileReader(f_src);
 		BufferedReader br = new BufferedReader(reader);
 		ArrayList<Employee> AE = new ArrayList<>();
 		String str;
-		String[] s=new String[5];
-		while((str=br.readLine())!=null) {
-			StringTokenizer st = new StringTokenizer(str,",");
-			int i=0;
-			while(st.hasMoreTokens()) {
-				s[i]=st.nextToken();
+		String[] s = new String[5];
+		while ((str = br.readLine()) != null) {
+			StringTokenizer st = new StringTokenizer(str, ",");
+			int i = 0;
+			while (st.hasMoreTokens()) {
+				s[i] = st.nextToken();
 				i++;
 			}
-			AE.add(new Employee(s[0],s[1],s[2],s[3],s[4]));
+			AE.add(new Employee(s[0], s[1], s[2], s[3], s[4]));
 		}
 		Frame f = new Frame();
 		f.setBackground(Color.yellow);
@@ -99,11 +104,11 @@ public class Main {
 		TextField t3 = new TextField();
 		TextField t4 = new TextField();
 		TextField t5 = new TextField();
-		t1.setBounds(200, 100, 170, 30);
-		t2.setBounds(200, 140, 170, 30);
-		t3.setBounds(200, 180, 170, 30);
-		t4.setBounds(200, 220, 170, 30);
-		t5.setBounds(200, 260, 170, 30);
+		t1.setBounds(250, 100, 170, 30);
+		t2.setBounds(250, 140, 170, 30);
+		t3.setBounds(250, 180, 170, 30);
+		t4.setBounds(250, 220, 170, 30);
+		t5.setBounds(250, 260, 170, 30);
 		// ----------------------------------------------
 		f.add(c);
 		f.add(b1);
@@ -132,7 +137,7 @@ public class Main {
 		t3.setText(AE.get(0).getJob());
 		t4.setText(AE.get(0).getSal());
 		t5.setText(AE.get(0).getDept());
-		//First
+		// First
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				t1.setText(AE.get(0).getE_no());
@@ -142,149 +147,169 @@ public class Main {
 				t5.setText(AE.get(0).getDept());
 			}
 		});
-		//Next
+		// Next
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Main m=new Main();
-				try{
-					int x=m.incr();
-					if(x<AE.size() && x>=0) {
+				Main m = new Main();
+				try {
+					int x = m.incr();
+					if (x < AE.size() && x >= 0) {
 						t1.setText(AE.get(x).getE_no());
 						t2.setText(AE.get(x).getName());
 						t3.setText(AE.get(x).getJob());
 						t4.setText(AE.get(x).getSal());
 						t5.setText(AE.get(x).getDept());
 					}
-				}
-				catch(Exception ex) {
+				} catch (Exception ex) {
 					System.out.println(ex.toString());
 				}
 			}
 		});
-		//Previous
+		// Previous
 		b3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Main m=new Main();
+				Main m = new Main();
 				try {
-					int x=m.decr();
-					if(x<AE.size() && x>=0) {
+					int x = m.decr();
+					if (x < AE.size() && x >= 0) {
 						t1.setText(AE.get(x).getE_no());
 						t2.setText(AE.get(x).getName());
 						t3.setText(AE.get(x).getJob());
 						t4.setText(AE.get(x).getSal());
 						t5.setText(AE.get(x).getDept());
 					}
-				}
-				catch(Exception ex) {
+				} catch (Exception ex) {
 					System.out.println(ex.toString());
 				}
 			}
 		});
-		//Last
+		// Last
 		b4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				t1.setText(AE.get(AE.size()-1).getE_no());
-				t2.setText(AE.get(AE.size()-1).getName());
-				t3.setText(AE.get(AE.size()-1).getJob());
-				t4.setText(AE.get(AE.size()-1).getSal());
-				t5.setText(AE.get(AE.size()-1).getDept());
+				t1.setText(AE.get(AE.size() - 1).getE_no());
+				t2.setText(AE.get(AE.size() - 1).getName());
+				t3.setText(AE.get(AE.size() - 1).getJob());
+				t4.setText(AE.get(AE.size() - 1).getSal());
+				t5.setText(AE.get(AE.size() - 1).getDept());
 			}
 		});
-		//System.out.println(AE.size());
-		//Add
+		// System.out.println(AE.size());
+		// Add
 		b5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				c.select("Add");
 			}
 		});
-		//System.out.println(AE.size());
-		//Edit
+		// System.out.println(AE.size());
+		// Edit
 		b6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				c.select("Edit");
-				x1=t1.getText();
-				x2=t2.getText();
-				x3=t3.getText();
-				x4=t4.getText();
-				x5=t5.getText();
-				for(int i=0;i<AE.size();i++) {
-					if(AE.get(i).getE_no().equals(x1) && AE.get(i).getName().equals(x2) && AE.get(i).getJob().equals(x3) && AE.get(i).getSal().equals(x4) && AE.get(i).getDept().equals(x5)) {
-						index=i;
+				x1 = t1.getText();
+				x2 = t2.getText();
+				x3 = t3.getText();
+				x4 = t4.getText();
+				x5 = t5.getText();
+				for (int i = 0; i < AE.size(); i++) {
+					if (AE.get(i).getE_no().equals(x1) && AE.get(i).getName().equals(x2)
+							&& AE.get(i).getJob().equals(x3) && AE.get(i).getSal().equals(x4)
+							&& AE.get(i).getDept().equals(x5)) {
+						index = i;
 					}
 				}
 				System.out.println(index);
 			}
 		});
-		//Delete
+		// Delete
 		b7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				c.select("Delete");
-				x1=t1.getText();
-				x2=t2.getText();
-				x3=t3.getText();
-				x4=t4.getText();
-				x5=t5.getText();
+				x1 = t1.getText();
+				x2 = t2.getText();
+				x3 = t3.getText();
+				x4 = t4.getText();
+				x5 = t5.getText();
 			}
 		});
-		//Save
+		// Save
 		b8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(c.getSelectedItem().equals("Edit")) {
-					x1=t1.getText();
-					x2=t2.getText();
-					x3=t3.getText();
-					x4=t4.getText();
-					x5=t5.getText();
-					AE.set(index,new Employee(x1,x2,x3,x4,x5));
-					for(Employee ee:AE) {
-						System.out.println(ee.getE_no()+" "+ee.getName()+" "+ee.getJob()+" "+ee.getSal()+" "+ee.getDept());
+
+				if (c.getSelectedItem().equals("Edit")) {
+					x1 = t1.getText();
+					x2 = t2.getText();
+					x3 = t3.getText();
+					x4 = t4.getText();
+					x5 = t5.getText();
+					AE.set(index, new Employee(x1, x2, x3, x4, x5));
+					for (Employee ee : AE) {
+						System.out.println(ee.getE_no() + " " + ee.getName() + " " + ee.getJob() + " " + ee.getSal()
+								+ " " + ee.getDept());
 					}
 				}
-				if(c.getSelectedItem().equals("Add")) {
-					AE.add(new Employee(t1.getText(),t2.getText(),t3.getText(),t4.getText(),t5.getText()));
+				if (c.getSelectedItem().equals("Add")) {
+					AE.add(new Employee(t1.getText(), t2.getText(), t3.getText(), t4.getText(), t5.getText()));
 					System.out.println(AE.size());
-					for(Employee ee:AE) {
-						System.out.println(ee.getE_no()+" "+ee.getName()+" "+ee.getJob()+" "+ee.getSal()+" "+ee.getDept());
+					for (Employee ee : AE) {
+						System.out.println(ee.getE_no() + " " + ee.getName() + " " + ee.getJob() + " " + ee.getSal()
+								+ " " + ee.getDept());
 					}
 				}
-				if(c.getSelectedItem().equals("Delete")){
-					int flag1=0;
-					for(int i=0;i<AE.size();i++) {
-						if(AE.get(i).getE_no().equals(x1) && AE.get(i).getName().equals(x2) && AE.get(i).getJob().equals(x3) && AE.get(i).getSal().equals(x4) && AE.get(i).getDept().equals(x5)) {
+				if (c.getSelectedItem().equals("Delete")) {
+					int flag1 = 0;
+					for (int i = 0; i < AE.size(); i++) {
+						if (AE.get(i).getE_no().equals(x1) && AE.get(i).getName().equals(x2)
+								&& AE.get(i).getJob().equals(x3) && AE.get(i).getSal().equals(x4)
+								&& AE.get(i).getDept().equals(x5)) {
 							AE.remove(AE.get(i));
-							flag1=1;
+							flag1 = 1;
 						}
 					}
-					if(flag1==0) {
+					if (flag1 == 0) {
 						JOptionPane.showMessageDialog(f, "Data Not Found!!");
-					}
-					else {
+					} else {
 						JOptionPane.showMessageDialog(f, "Record Deleted Successfully!!");
 					}
 				}
+				try {
+					FileWriter FW = new FileWriter(f_src);
+					BufferedWriter BW = new BufferedWriter(FW);
+					for (Employee ee : AE) {
+						BW.write(ee.getE_no() + "," + ee.getName() + "," + ee.getJob() + "," + ee.getSal() + ","
+								+ ee.getDept() + "\n");
+					}
+					BW.flush();
+					BW.close();
+					FW.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
-		//Search
+		// Search
 		b9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int flag=1;
-				//System.out.println(t1.getText()+" "+t2.getText()+" "+t3.getText()+" "+t4.getText()+" "+t5.getText());
-				for(int i=0;i<AE.size();i++) {	
-					if(AE.get(i).getE_no().equals(t1.getText()) || AE.get(i).getName().equals(t2.getText()) || AE.get(i).getJob().equals(t3.getText()) || AE.get(i).getSal().equals(t4.getText()) || AE.get(i).getDept().equals(t5.getText())) {
+				int flag = 1;
+				// System.out.println(t1.getText()+" "+t2.getText()+" "+t3.getText()+" "+t4.getText()+" "+t5.getText());
+				for (int i = 0; i < AE.size(); i++) {
+					if (AE.get(i).getE_no().equals(t1.getText()) || AE.get(i).getName().equals(t2.getText())
+							|| AE.get(i).getJob().equals(t3.getText()) || AE.get(i).getSal().equals(t4.getText())
+							|| AE.get(i).getDept().equals(t5.getText())) {
 						t1.setText(AE.get(i).getE_no());
 						t2.setText(AE.get(i).getName());
 						t3.setText(AE.get(i).getJob());
 						t4.setText(AE.get(i).getSal());
 						t5.setText(AE.get(i).getDept());
-						flag=0;
+						flag = 0;
 					}
 				}
-				if(flag==1) {
+				if (flag == 1) {
 					JOptionPane.showMessageDialog(f, "Data Not Found Please check again");
 				}
 			}
 		});
-		//Clear
+		// Clear
 		b10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				t1.setText("");
@@ -294,7 +319,7 @@ public class Main {
 				t5.setText("");
 			}
 		});
-		//Exit
+		// Exit
 		b11.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				f.dispose();
@@ -307,12 +332,14 @@ public class Main {
 		});
 	}
 }
-class Employee{
+
+class Employee {
 	private String e_no;
 	private String name;
 	private String job;
 	private String sal;
 	private String dept;
+
 	public Employee(String e_no, String name, String job, String sal, String dept) {
 		this.e_no = e_no;
 		this.name = name;
@@ -320,33 +347,43 @@ class Employee{
 		this.sal = sal;
 		this.dept = dept;
 	}
+
 	public String getE_no() {
 		return e_no;
 	}
+
 	public void setE_no(String e_no) {
 		this.e_no = e_no;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getJob() {
 		return job;
 	}
+
 	public void setJob(String job) {
 		this.job = job;
 	}
+
 	public String getSal() {
 		return sal;
 	}
+
 	public void setSal(String sal) {
 		this.sal = sal;
 	}
+
 	public String getDept() {
 		return dept;
 	}
+
 	public void setDept(String dept) {
 		this.dept = dept;
 	}
