@@ -1,18 +1,16 @@
 package project;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.Reader;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-
+import java.time.Period;
 public class Main {
-
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		Reader f1 = new FileReader("D:\\TEST1\\JavaCollections\\TextFiles\\AccountDetails.txt");
-		Reader f2 = new FileReader("D:\\TEST1\\JavaCollections\\TextFiles\\TransactionsDetails.txt");
+		Reader f1 = new FileReader("C:\\Users\\USER\\eclipse-workspace\\Java Programming\\src\\Files\\AccountDetails.txt");
+		Reader f2 = new FileReader("C:\\Users\\USER\\eclipse-workspace\\Java Programming\\src\\Files\\TransactionDetails.txt");
 		BufferedReader br1 = new BufferedReader(f1);
 		BufferedReader br2 = new BufferedReader(f2);
 		ArrayList<Accounts> aa = new ArrayList<>();
@@ -59,7 +57,7 @@ public class Main {
 		}
 		System.out.println("Balance on date: " + getBalanceOnDate(at, aa.get(2), LocalDate.parse("2023-02-19")));
 		System.out.println("Minimum balance of month: " + getMinBalance(at, aa.get(0), LocalDate.parse("2023-03-12")));
-		System.out.println("Rate of Interest: " + getInterest(at, aa.get(0), LocalDate.parse("2023-03-12")));
+		System.out.println("Rate of Interest: " + getInterest(at, aa.get(0)));
 	}
 
 	public static ArrayList<Accounts> getAllAccounts(ArrayList<Accounts> aa) {
@@ -103,38 +101,77 @@ public class Main {
 	}
 
 	public static double getMinBalance(ArrayList<Transactions> tr, Accounts a, LocalDate m) {
-		LocalDate mm = LocalDate.of(m.getYear(), m.getMonthValue() - 1, m.minusMonths(1).lengthOfMonth());
+		if(m.getMonth().compareTo(a.getAcc_open_date().getMonth())==0){
+			return getBalanceOnDate(tr, a, m);
+		}
+		LocalDate mm = LocalDate.of(m.getYear(), m.getMonthValue() , 10);
 		double bal = getBalanceOnDate(tr, a, mm);
-		double min = (double) a.getAcc_bal();
+		double min = getBalanceOnDate(tr, a, mm);
 		double minn = 0;
+		int flag=0;
 		ArrayList<Transactions> att = getAccountTransactions(tr, a);
 		for (int i = 0; i < att.size(); i++) {
-			if (att.get(i).getTrans_date().getMonthValue() == m.getMonthValue()
-					&& att.get(i).getTrans_date().getYear() == m.getYear()) {
+			if (att.get(i).getTrans_date().getMonthValue() == m.getMonthValue() 
+					&& att.get(i).getTrans_date().getYear() == m.getYear() && m.getDayOfMonth()>10) {
 				if (att.get(i).getTrans_type().equals("deposit")) {
 					min += att.get(i).getTrans_amt();
 				} else {
 					min -= att.get(i).getTrans_amt();
 					if (min < bal) {
+						flag=1;
 						minn = min;
 					}
 				}
 			}
 		}
-		return Math.min(bal, minn);
+		if(flag==1) {
+			return Math.min(bal, minn);
+		}
+		return bal;
 	}
 
-	public static double getInterest(ArrayList<Transactions> tr, Accounts a, LocalDate month) {
-		double prince_amt = getMinBalance(tr, a, month);
+	public static double getInterest(ArrayList<Transactions> tr, Accounts a) {
+		LocalDate l = LocalDate.now();
+		LocalDate l1=l;
 		double rate = 4.5 / 6;
-		double interest = (prince_amt * rate) / 1200;
+		double interest=0;
+		double prince_amt=0;
+		int n=1;
+		Period period=Period.between(a.getAcc_open_date(),l);
+		int diff=(int) period.toTotalMonths();
+		while(n<=6) {
+			if(a.getAcc_open_date().getDayOfMonth()<=10 && a.getAcc_open_date().compareTo(l1) <= 0 ) {
+				prince_amt = getMinBalance(tr, a, l);
+				//System.out.println(prince_amt+" "+l.getMonthValue());
+				interest += ((prince_amt * rate) / 1200);
+				l=l.minusMonths(1);
+				//System.out.println(interest+"hello");
+				if((diff+1)==n) {
+					break;
+				}
+			}
+			else if(a.getAcc_open_date().getDayOfMonth()>10 && a.getAcc_open_date().compareTo(l1) <= 0 ){
+				prince_amt = getMinBalance(tr, a, l);
+				interest += (prince_amt * rate) / 1200;
+				l=l.minusMonths(1);
+				//System.out.println(interest+"hello");
+				if(diff==n) {
+					break;
+				}
+			}
+			else {
+				prince_amt = getMinBalance(tr, a, l);
+				interest += (prince_amt * rate) / 1200;
+				l=l.minusMonths(1);
+			}
+			n++;
+		}
 		return interest;
 	}
 }
 
 
 
-package project;
 
 import java.time.LocalDate;
 
@@ -184,7 +221,6 @@ public class Accounts {
 		this.acc_bal = acc_bal;
 	}
 }
-
 
 package project;
 
@@ -248,14 +284,17 @@ public class Transactions {
 }
 
 
+
 1,Savings,2023-02-11,50000
 2,Savings,2022-02-11,60000
 3,Savings,2023-01-11,70000
 4,Savings,2021-02-15,80000
 
 
-11,1,2023-03-10,deposit,10000
+11,1,2023-03-11,deposit,10000
 12,1,2023-03-12,withdraw,50000
+19,1,2023-04-11,deposit,50000
+110,1,2023-04-12,withdraw,10000
 13,2,2023-02-10,deposit,5000
 14,2,2023-02-12,withdraw,10000
 15,3,2023-02-10,deposit,10000
