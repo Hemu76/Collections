@@ -103,8 +103,7 @@ public class Main {
 	}
 
 	public static double getMinBalance(ArrayList<Transactions> tr, Accounts a, LocalDate m) {
-		int days=m.getMonthValue()-1;
-		LocalDate mm = LocalDate.of(m.getYear(), m.getMonthValue() - 1, m.lengthOfMonth());
+		LocalDate mm = LocalDate.of(m.getYear(), m.getMonthValue() - 1, m.minusMonths(1).lengthOfMonth());
 		double bal = getBalanceOnDate(tr, a, mm);
 		double min = (double) a.getAcc_bal();
 		double minn = 0;
