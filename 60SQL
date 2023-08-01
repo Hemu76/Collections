@@ -1,0 +1,115 @@
+List the employee numbers, name, job title and hiredate of the employees in department 
+10. 
+2. Select the name & salary of all employees who are working as clerks. 
+3. List the names, job title & salary of employees who were hired on December 17, 1980. 
+4. Select the name, salary, and commission of employees whose commission is greater than 
+their salary. 
+5. Display the names, monthly-salary, daily-salary, and hourly-salary for all the employees. 
+6. Assume that salary column in the table is monthly salary, and the number of working days 
+are 22 and the number of working hours per day are 8. Rename the columns as MONTHLY, 
+DAILY, 
+AND HOURLY. 
+7. List the names and employee numbers of Managers who earn more than 2600/-. Display in 
+alphabetical order of their names. 
+8. Select the information about Managers and President from the column job in the EMP 
+table.Order the result by name 
+9. List the employee names that don’t end in ‘S’. 
+10. List the employee names that start with ‘C’. 
+11. List the name, job and department numbers of those employees whose names fall in the 
+alphabetical range of ‘C’ to ‘F’. 
+12. Display the list of employee names starting with ‘I’ and ending with ‘R’. 
+13. Display the employee names which have ‘TII’ or ‘LL’ in them. 
+14. Display the list of employees who were hired during 1983. 
+15. Display the data shown as follows 
+ Smith has held the position of clerk in department number 20 since 13-JUNE-83. 
+ Allen has held the position of clerk in department number 20 since 13-JUNE-83. 
+ Ward has held the position of clerk in department number 20 since 13-JUNE-83. 
+16. List all rows from EMP table by converting the NULL values in COMM column to 0 (use NVL 
+command) 
+17. Write a query that will accept a given job title and displays all the records according to that 
+title . 
+18. List all employees who don’t get any commission. 
+19. Show that length names appear in the EMP table . Eliminate the duplicate lengths from the 
+rows returned. Do not show the name themselves. 
+20. List the names and hire-date of employees in department number 20. Display the hire-date 
+formatted as ‘12-03-81’.
+21. How many months has the President worked for the company? Round to the nearest whole 
+number of months. 
+22. List the names of all the employees whose hire-date anniversary is in the month of 
+December. 
+ Queries List 
+ 2
+23. List the employee names, jobs, and a job classification which you will supply. Translate the 
+value stored in each 
+job field(CLERK,MANAGER ETC.) to job classification number (1,2 etc). translate CLERK to 
+1, MANAGER to 3, 
+PRESIDENT to 5 and all the other jobs to 2. Name the job the classification column 
+JOBCLASS. 
+24. Give SQL commands to find the average annual salary per job in each department. The sal 
+figures in the EMP table 
+ are for each month. 
+25. In one query, count the number of people in department 30 who receive a salary and the 
+number of people who receive commission . 
+26. Compute the average, minimum and maximum salaries of those groups of employees 
+having the job of clerk or manager. 
+27. Display the department numbers where more than 2 Clerks or 3 Managers are working. 
+28. Calculate the total compensation expense for each department for one year. The SAL and 
+COMM figures in EMP table are for a month. Assume that employees who don’t earn a 
+commission, receive non-monetary benefits that are worth $100.00 a month. 
+29. Write a query to select the duplicated rows. 
+30. Write a query to find out the nth maximum salary. 
+31. Who was the employee hired in all the departments. 
+32. How many employees work in New York. 
+33. Write a query to display as follows: 
+ Ename Date hired 
+ ****** ********* 
+ Smith June,thirteen 1983 
+ Jones October, thirty first 1983 
+34. Print the list of employees, display just salary if the salary is more than 1500, if exactly 1500 
+display on target, if less 
+ than 1500 display below 1500. 
+ 
+ ENAME SALARY 
+ ADAMS BELOW 1500 
+ ALLEN 1600 
+ BLAKE 2850 
+ CLARK 2450 
+ FORD 3000 
+ Queries List 
+ 3
+ JAMES BELOW 1500 
+35. Display as follows- employees hired on or before 15th of any month are paid on the last 
+Friday of that month, those hired after the 15th are paid on the last Friday of the following 
+month.. 
+Print a list of employees, their hire-date and 
+first pay date, sort on hire-date. 
+36. Write query to list salary, (sal-avg(sal)) from emp table. 
+37. Find the number of different employees and the number of different departments. 
+38. Determine the average salary of employees. 
+39. List the department numbers, department names, location, local commission paid and 
+total salary of each department. 
+40. Display the average monthly salary bill for each job type within a department. 
+41. Display only those jobs where minimum salary is greater than or equal to 3000. 
+42. Find the average salary and total remuneration for each job class, remember salesmen earn 
+commission . 
+43. Find out the difference between the highest and lowest salary. 
+44. Find all the departments having more than 3 employees. 
+45. Check whether all the employee numbers are indeed unique. 
+46. List the lowest paid employees working for each manager, exclude any group where the 
+minimum salary is less than 1000, sort out the result by salary. 
+47. Display all employee names, department numbers, and department names. 
+48. Display all employee names and their department names in the order of their department 
+names. 
+49. Display the department that has no employees. 
+50. Find all the employees who joined the company before their manager. 
+51. Find the employees who earn more than the lowest salary in each department. 
+52. Display the employees who earn more than the lowest salary in department 30. 
+53. Find the employees who earn than every employee in department 30. 
+54. Find the job with highest paid salary. 
+55. Display the name, job, hire-date for all those employees whose salary is greater than the 
+highest salary in each sales department. 
+56. Copy all information on department 10 from EMP table to another table. 
+57. Write a query to list all the columns ,datatypes of the given table. 
+58. Write a query to list all the employees who are earning the least 3 salaries 
+59. Write a query to list the deptnos which are having the highest max salaray .. 
+60. Write a query to list last 10 rows from the table in which number of rows are not known
