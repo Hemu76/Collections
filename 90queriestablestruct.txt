@@ -1,0 +1,160 @@
+CREATE TABLE Programmersh (
+    Progid SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    dob DATE NOT NULL,
+    doj DATE NOT NULL,
+    Gender CHAR(1) NOT NULL CHECK (Gender IN ('M', 'F')),
+    prof1 VARCHAR(50),
+    prof2 VARCHAR(50),
+    salary NUMERIC(6, 2) NOT NULL
+);
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('Janardhan', '2001-04-21', '2020-04-21', 'M', 'Python', 'Java', 3200);
+CREATE TABLE SoftwaresDevelopedh(
+    Softid INT PRIMARY KEY,
+    Progid INT NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    dev_in VARCHAR(50) NOT NULL,
+    scost NUMERIC(7, 2),
+    dcost NUMERIC(5),
+    sold NUMERIC(3),
+    FOREIGN KEY (Progid) REFERENCES Programmersh (Progid)
+);
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (1, 1, 'README','CPP', '300.00', 1200, 84);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (2, 2, 'PARACHUTES',' BASIC', '399.95', 6000, 43);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (3, 3, 'VIDEO TITLING',' PASCAL', '7500.00', 16000, 9);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (4, 4, 'INVENTORY',' COBOL', '3000.00', 3500, 0);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (5, 5, 'PAYROLL PKG.',' DBASE', '9000.00', 20000, 7);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (6, 6, 'FINANCIAL ACCT.',' ORACLE', '18000.00', 85000, 4);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (7, 1, 'CODE GENERATOR ','C', '4500.00', 20000, 23);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (8, 1, 'README ','CPP', '300.00', 1200, 84);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (9, 7, 'BOMBS AWAY ','ASSEMBLY', '750.00', 3000, 11);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (10, 1, 'VACCINES ','C', '1900.00', 3100, 21);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (11, 5, 'HOTEL MGMT. ','DBASE', '13000.00', 35000, 4);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (12, 3, 'DEAD LEE ','PASCAL', '599.95', 4500, 7);
+
+
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('ANAND', '1966-04-12', '1992-04-21', 'M', 'PASCAL', 'BASIC', 3200);
+
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('ALTAF', '1964-07-02', '1990-11-13', 'M', 'CLIPPER', 'COBOL', 2800);
+
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('JULIANA', '1960-01-31', '1990-04-21', 'F', 'COBOL', 'DBASE', 3000);
+
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('KAMALA', '1968-10-30', '1992-01-02', 'F', 'C', 'DBASE', 2900);
+
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('MARY', '1970-06-24', '1991-02-01', 'F', 'CPP', 'ORACLE', 4500);
+
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('NELSON', '1965-09-11', '1989-10-11', 'M', 'COBOL', 'DBASE', 2500);
+
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('PATTRICK', '1965-11-10', '1990-04-21', 'M', 'PASCAL', 'CLIPPER', 2800);
+
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('QADIR', '1965-08-31', '1991-04-21', 'M', 'ASSEMBLY', 'C', 3000);
+
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('RAMESH', '1967-05-03', '1991-02-28', 'M', 'PASCAL', 'DBASE', 3200);
+
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('REBECCA', '1967-01-01', '1990-12-01', 'F', 'BASIC', 'COBOL', 2500);
+
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('REMITHA', '1970-04-19', '1993-04-20', 'F', 'C', 'ASSEMBLY', 3600);
+
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('REVATHI', '1969-12-02', '1992-01-02', 'F', 'PASCAL', 'BASIC', 3700);
+
+INSERT INTO Programmersh (name, dob, doj, Gender, prof1, prof2, salary)
+VALUES ('VIJAYA', '1965-12-14', '1992-05-02', 'F', 'FOXPRO', 'C', 3500);
+select * from programmersh;
+select * from softwaresdevelopedh;
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (13, 13, 'PC UTILITIES', 'C', 725.00, 5000, 51);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (14, 8, 'TSR HELP PKG.', 'ASSEMBLY', 2500.00, 6000, 7);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (15, 9, 'HOSPITAL MGMT.', 'PASCAL', 1100.00, 75000, 2);
+
+INSERT INTO SoftwaresDevelopedh (Softid, Progid, title, dev_in, scost, dcost, sold)
+VALUES (16, 13, 'TSR EDITOR', 'C', 900.00, 700, 6);
+
+CREATE TABLE CoursesStudiedh(
+    Progid INT NOT NULL,
+    Corsindex INT NOT NULL,
+    splace VARCHAR(50) NOT NULL,
+    course VARCHAR(50) NOT NULL,
+    ccost NUMERIC(7, 2) NOT NULL,
+    PRIMARY KEY (Progid, Corsindex),
+    FOREIGN KEY (Progid) REFERENCES Programmersh (Progid)
+);
+INSERT INTO CoursesStudiedh (Progid, Corsindex, splace, course, ccost)
+VALUES (7, 1, 'NKIITS', 'PGDCA', 4500);
+
+INSERT INTO CoursesStudiedh (Progid, Corsindex, splace, course, ccost)
+VALUES (1, 2, 'COIT', 'DCA', 7200);
+
+INSERT INTO CoursesStudiedh (Progid, Corsindex, splace, course, ccost)
+VALUES (2, 1, 'BDPS', 'MCA', 22000);
+
+INSERT INTO CoursesStudiedh (Progid, Corsindex, splace, course, ccost)
+VALUES (2, 2, 'NKXGEN', 'DCA', 5000);
+
+INSERT INTO CoursesStudiedh(Progid, Corsindex, splace, course, ccost)
+VALUES (6, 1, 'NKIITS', 'PGDCA', 4500);
+
+INSERT INTO CoursesStudiedh (Progid, Corsindex, splace, course, ccost)
+VALUES (3, 2, 'NKXGEN', 'DAP', 6200);
+
+INSERT INTO CoursesStudiedh (Progid, Corsindex, splace, course, ccost)
+VALUES (5, 3, 'NKXGEN', 'DCAP', 5200);
+
+INSERT INTO CoursesStudiedh (Progid, Corsindex, splace, course, ccost)
+VALUES (1, 3, 'APPLE', 'HDCA', 14000);
+
+INSERT INTO CoursesStudiedh (Progid, Corsindex, splace, course, ccost)
+VALUES (4, 2, 'NKIITS', 'PGDCA', 4500);
+
+INSERT INTO CoursesStudiedh (Progid, Corsindex, splace, course, ccost)
+VALUES (7, 3, 'BRILLIANT', 'DCAP', 11000);
+
+INSERT INTO CoursesStudiedh (Progid, Corsindex, splace, course, ccost)
+VALUES (6, 2, 'BDPS', 'DCS', 6000);
+
+INSERT INTO CoursesStudiedh (Progid, Corsindex, splace, course, ccost)
+VALUES (8, 3, 'NKIITS', 'DAP', 5000);
+
+INSERT INTO CoursesStudiedh (Progid, Corsindex, splace, course, ccost)
+VALUES (4, 4, 'BDPS', 'DCA', 4800);
+
+
