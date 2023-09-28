@@ -359,7 +359,7 @@ public class HospitalController {
 						up.setUploadId(index);
 						up.setReUploadId(upload.getUploadId());
 						up.setClaimId(claimId);
-						up.setData(file.getOriginalFilename()); // Store the file name as text
+						up.setData(file.getOriginalFilename());
 						up.setType("text");
 
 						insuranceService.addUploads(up);
